@@ -1,0 +1,63 @@
+#include <iostream>
+using namespace std;
+
+int main()
+{
+	setlocale(0, "");
+	cout << "Задание 1 \n";
+	cout << "int: " << sizeof(int) << "\n";
+	cout << "short int: " << sizeof(short int) << "\n";
+	cout << "long int: " << sizeof(long int) << "\n";
+	cout << "float: " << sizeof(float) << "\n";
+	cout << "double: " << sizeof(double) << "\n";
+	cout << "long double: " << sizeof(long double) << "\n";
+	cout << "char: " << sizeof(char) << "\n";
+	cout << "bool: " << sizeof(bool) << "\n";
+
+	cout << "\nЗадание 2 \n";
+	int IntValue;
+	cout << "Введите целое число: ";
+	cin >> IntValue;
+	unsigned int order = sizeof(int) * 8;
+	unsigned int mask = 1 <<  order - 1;
+
+	for (int i = 1; i <= order; i++)
+	{
+		putchar(IntValue & mask ? '1' : '0');
+		IntValue <<= 1;
+		if (i % 8 == 0)
+		{
+			putchar(' ');
+		}
+		if (i % order - 1 == 0)
+		{
+			putchar(' ');
+		}
+	}
+	cout << "\n\nЗадание 3 \n";
+	union
+	{
+		float FloatValue;
+		int a;
+	};
+	
+	cout << "Введите вещественное число: ";
+	cin >> FloatValue;
+	order = sizeof(float) * 8;
+	
+	for (int h = 1; h <= order; h++)
+	{
+		putchar(a& mask ? '1' : '0');
+		a <<= 1;
+
+		if (h == 9 || h % 8 == 0 || h == 1)
+		{
+			putchar(' ');
+		}
+		if (h % order - 1 == 0)
+		{
+			putchar(' ');
+		}
+	}
+	cout << "\n" << "  |< Эксп  >|<        Мантиса        >|\n\n";
+}
